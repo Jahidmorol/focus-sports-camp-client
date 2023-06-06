@@ -1,20 +1,26 @@
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 
 const SocialLogin = () => {
     const {signInWithGoogle} = useAuth()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const handleGoogle = () => {
         signInWithGoogle()
         .then(() => {
             Swal.fire({
-                position: 'top-end',
+                position: 'bottom-start',
                 icon: 'success',
                 title: 'LogIn Success',
                 showConfirmButton: false,
                 timer: 1000
               })
+              navigate(from, { replace: true });
         })
        
     }

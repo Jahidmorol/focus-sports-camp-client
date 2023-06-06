@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import CustomLink from '../../../components/CustomLink/CustomLink';
 import useAuth from '../../../hooks/useAuth';
 
@@ -7,11 +8,20 @@ import useAuth from '../../../hooks/useAuth';
 const Header = () => {
     const [userClicked, setUserClicked] = useState(false);
     const [menuClicked, setMenuClicked] = useState(false);
-    const {user} = useAuth();
+    const {user, logOut} = useAuth();
     // const user = true
   
     const handleSignOut = () => {
-    //   signOut(auth);
+        logOut()
+        .then(() => {
+            Swal.fire({
+                position: "bottom-start",
+                icon: "success",
+                title: "LogOut Success",
+                showConfirmButton: false,
+                timer: 1000,
+              });
+        })
     };
     return (
         <nav className="bg-white shadow-md border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 sticky top-0 z-50">
@@ -84,7 +94,7 @@ const Header = () => {
                 {user ? (
                   <li>
                     <CustomLink
-                      to="/login"
+                    //   to="/login"
                       onClick={handleSignOut}
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
@@ -228,7 +238,7 @@ const Header = () => {
             {user ? (
               <li>
                 <CustomLink
-                  to="/login"
+                //   to="/"
                   onClick={handleSignOut}
                   className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
