@@ -21,22 +21,30 @@ const SignIn = () => {
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const onSubmit = (data) => {
     console.log(data);
     // Handle form submission here
-    logIn(data.email, data.password).then((result) => {
-      // const loggedUser = result.user;
-      Swal.fire({
-        position: "bottom-start",
-        icon: "success",
-        title: "LogIn Success",
-        showConfirmButton: false,
-        timer: 1000,
+    logIn(data.email, data.password)
+      .then(() => {
+        Swal.fire({
+          position: "bottom-start",
+          icon: "success",
+          title: "LogIn Success",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        if (error) {
+          setError(error.message);
+        } else {
+          setError("");
+        }
       });
-      reset();
-      navigate(from, { replace: true });
-    });
   };
 
   const togglePasswordVisibility = () => {
@@ -53,31 +61,11 @@ const SignIn = () => {
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">Sign In</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-gray-700">
-                Name
-              </label>
-              <input
-                placeholder="Name"
-                required
-                type="text"
-                id="name"
-                {...register("name", { required: "Name is required" })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
-
-            <div>
               <label htmlFor="email" className="block text-gray-700">
                 Email
               </label>
               <input
                 placeholder="Email"
-                required
                 type="email"
                 id="email"
                 {...register("email", { required: "Email is required" })}
@@ -119,6 +107,8 @@ const SignIn = () => {
                 </p>
               )}
             </div>
+
+            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
             <input
               type="submit"

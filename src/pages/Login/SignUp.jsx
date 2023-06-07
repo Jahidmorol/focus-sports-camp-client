@@ -13,11 +13,13 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
     watch,
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const onSubmit = (data) => {
     console.log(data);
@@ -25,6 +27,7 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         updateUser(data.name, data.photoURL).then((result) => {
+          reset();
           Swal.fire({
             position: "bottom-start",
             icon: "success",
@@ -35,12 +38,22 @@ const SignUp = () => {
           navigate("/");
         });
       })
-      .catch((error) => console.error(error.message));
+      .catch((error) => {
+        console.error(error.message);
+        if(error){
+
+            setError(error.message);
+        }
+        else{
+            setError(''); 
+        }
+      });
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   return (
     <>
       <Helmet>
@@ -56,7 +69,6 @@ const SignUp = () => {
               </label>
               <input
                 placeholder="Name"
-                required
                 type="text"
                 id="name"
                 {...register("name", { required: "Name is required" })}
@@ -75,7 +87,6 @@ const SignUp = () => {
               </label>
               <input
                 placeholder="Email"
-                required
                 type="email"
                 id="email"
                 {...register("email", { required: "Email is required" })}
@@ -94,10 +105,9 @@ const SignUp = () => {
               </label>
               <input
                 placeholder="Photo URL"
-                required
                 type="text"
                 id="photo"
-                {...register("photo", { required: "Name is required" })}
+                {...register("photo", { required: "Photo URL is required" })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
               {errors.photo && (
@@ -114,14 +124,16 @@ const SignUp = () => {
               <div className="relative">
                 <input
                   placeholder="Password"
-                  required
                   type={showPassword ? "text" : "password"}
                   id="password"
                   {...register("password", {
-                    required: "Password is required",
+                    required: true,
+                    minLength: 6,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 pr-12"
                 />
+
                 <button
                   type="button"
                   className="absolute top-1/2 right-3 transform -translate-y-1/2"
@@ -130,9 +142,21 @@ const SignUp = () => {
                   {showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
                 </button>
               </div>
-              {errors.password && (
+
+              {errors.password?.type === "required" && (
                 <p className="text-red-500 text-sm mt-1">
-                  {errors.password.message}
+                  Password is required
+                </p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-500 text-sm mt-1">
+                  Password must be 6 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-500 text-sm mt-1">
+                  Password must have one Uppercase one lower case, one number
+                  and one special character.
                 </p>
               )}
             </div>
@@ -144,7 +168,6 @@ const SignUp = () => {
               <div className="relative">
                 <input
                   placeholder="Confirm Password"
-                  required
                   type={showPassword ? "text" : "password"}
                   id="confirmPassword"
                   {...register("confirmPassword", {
@@ -167,6 +190,8 @@ const SignUp = () => {
                 </p>
               )}
             </div>
+
+            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
             <input
               type="submit"
