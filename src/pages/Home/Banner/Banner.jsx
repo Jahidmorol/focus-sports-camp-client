@@ -1,12 +1,10 @@
 import React from "react";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from "react-responsive-carousel";
-import img1 from "../../../../assets/Banner img/img (1).jpg";
-import img2 from "../../../../assets/Banner img/img (2).jpg";
-import img3 from "../../../../assets/Banner img/img (3).jpg";
-import img5 from "../../../../assets/Banner img/img (5).jpg";
-import img6 from "../../../../assets/Banner img/img (6).jpg";
-import img7 from "../../../../assets/Banner img/img (7).jpg";
+import img1 from "../../../assets/Banner img/img (1).jpg";
+import img2 from "../../../assets/Banner img/img (2).jpg";
+import img3 from "../../../assets/Banner img/img (3).jpg";
+import img5 from "../../../assets/Banner img/img (5).jpg";
+import img6 from "../../../assets/Banner img/img (6).jpg";
+import img7 from "../../../assets/Banner img/img (7).jpg";
 
 import { Navigation } from "swiper";
 import "swiper/css/navigation";
@@ -15,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   return (
-    <div className="mx-auto">
+    <div className="w-[95%] mx-auto">
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div className=" md:h-screen">
