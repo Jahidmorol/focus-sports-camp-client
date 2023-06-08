@@ -1,8 +1,15 @@
 import React from "react";
 import PopulerClassCard from "./PopulerClassCard";
-import sports from "../../../../public/sports.json";
+import useSports from "../../../hooks/useSports";
+import Loading from "../../Sheared/Loading/Loading";
 
 const PopulerClass = () => {
+    const [sports, loader] = useSports();
+
+    if(loader){
+        return <Loading></Loading>
+    }
+    
   const isLoggedIn = () => {};
   const isAdmin = () => {};
   return (
