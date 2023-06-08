@@ -1,9 +1,17 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
+import DashBoard from "../layouts/DashBoard";
 import Main from "../layouts/Main";
+import AddClass from "../pages/Deshboard/AddClass/AddClass";
+import Enrolled from "../pages/Deshboard/Enrolled/Enrolled";
+import ManageClass from "../pages/Deshboard/ManageClass/ManageClass";
+import ManageUsers from "../pages/Deshboard/ManageUsers/ManageUsers";
+import MyClasses from "../pages/Deshboard/MyClasses/MyClasses";
+import VeiwFeedback from "../pages/Deshboard/VeiwFeedback/VeiwFeedback";
 import Home from "../pages/Home/Home/Home";
 import SignIn from "../pages/Login/SignIn";
 import SignUp from "../pages/Login/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +29,51 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashBoard></DashBoard>
+      </PrivateRoute>
+    ),
+    children: [
+      // user
+      {
+        path: "dashboard",
+        element: <MyClasses></MyClasses>,
+      },
+      {
+        path: "myclasses",
+        element: <MyClasses></MyClasses>,
+      },
+      {
+        path: "enrolled",
+        element: <Enrolled></Enrolled>,
+      },
+      //   instructor
+      {
+        path: "addclass",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "manageclass",
+        element: <ManageClass></ManageClass>,
+      },
+      {
+        path: "veiwfeedback",
+        element: <VeiwFeedback></VeiwFeedback>,
+      },
+      // admin
+      {
+        path: "manageclass",
+        element: <ManageClass></ManageClass>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },

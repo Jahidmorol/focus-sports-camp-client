@@ -8,7 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser, updateUser } = useAuth();
+  const { createUser, updateUser, setReload } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -28,6 +28,7 @@ const SignUp = () => {
       .then((result) => {
         updateUser(data.name, data.photoURL).then((result) => {
           reset();
+          setReload(new Date().getTime());
           Swal.fire({
             position: "bottom-start",
             icon: "success",
