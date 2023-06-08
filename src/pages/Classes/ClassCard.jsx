@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
-const PopulerClassCard = ({ sport }) => {
+const ClassCard = ({ sport }) => {
   const { image, sportName, instructorName, availableSeats, price } = sport;
   const isSeatsAvailable = availableSeats > 0;
   const { user } = useAuth();
   const navigate = useNavigate();
 
   const isAdmin = false;
-  const isInstructor = false
+  const isInstructor = false;
   const isSelectable = isSeatsAvailable && !isAdmin && !isInstructor;
   const [selected, setSelected] = useState(false);
 
-  const handleSelect = () => {
+  const handleSelect = (sport) => {
     if (user) {
-      console.log(user);
-      setSelected(true); // Set the selected state to true
+      setSelected(true);
+
+      
     } else {
       navigate("/signin");
       Swal.fire({
@@ -49,11 +50,11 @@ const PopulerClassCard = ({ sport }) => {
       <p className="text-sm  mb-4">Price: {price}</p>
 
       <button
-        onClick={handleSelect}
+        onClick={() => handleSelect(sport)}
         disabled={!isSelectable || selected} // Disable the button if not selectable or already selected
-        className={`w-full py-2 px-4 ${
-          isSelectable ? "bg-blue-500" : ""
-        } ${selected && "bg-green-500 hover:bg-green-500"}  hover:bg-${
+        className={`w-full py-2 px-4 ${isSelectable ? "bg-blue-500" : ""} ${
+          selected && "bg-green-500 hover:bg-green-500"
+        }  hover:bg-${
           isSelectable ? "blue" : ""
         }-600 text-white font-semibold rounded-md transition duration-300`}
       >
@@ -63,4 +64,4 @@ const PopulerClassCard = ({ sport }) => {
   );
 };
 
-export default PopulerClassCard;
+export default ClassCard;

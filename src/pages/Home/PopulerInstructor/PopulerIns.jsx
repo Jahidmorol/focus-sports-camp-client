@@ -6,12 +6,20 @@ import instructors from "../../../../public/instructors.json";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import useInstructors from "../../../hooks/useInstructors";
+import Loading from "../../Sheared/Loading/Loading";
 
 const PopulerIns = () => {
+  const [instructors, loader] = useInstructors();
+  if (loader) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="w-[90%] mx-auto">
       <div>
-        <h2 className="text-2xl mb-5 md:text-4xl font-bold text-center">Popular Instructors</h2>
+        <h2 className="text-2xl mb-5 md:text-4xl font-bold text-center">
+          Popular Instructors
+        </h2>
       </div>
       <Swiper
         slidesPerView={1}
@@ -42,12 +50,9 @@ const PopulerIns = () => {
         ))}
       </Swiper>
     </div>
-
-    
   );
 };
 
 export default PopulerIns;
 
-
-// 
+//

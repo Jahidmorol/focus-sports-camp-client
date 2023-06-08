@@ -1,8 +1,14 @@
 import React from "react";
-import instructors from "../../../public/instructors.json";
+import useInstructors from "../../hooks/useInstructors";
+import Loading from "../Sheared/Loading/Loading";
 import InstructorCard from "./InstructorCard";
 
 const Instructors = () => {
+    const [instructors, loader] = useInstructors();
+    if(loader){
+        return <Loading></Loading>
+    }
+    
   return (
     <div>
       <h2 className="text-center text-2xl md:text-4xl font-bold md:my-10">
