@@ -4,6 +4,7 @@ import DashBoard from "../layouts/DashBoard";
 import Main from "../layouts/Main";
 import Classes from "../pages/Classes/Classes";
 import AddClass from "../pages/Deshboard/AddClass/AddClass";
+import AddedClass from "../pages/Deshboard/AddedClass/AddedClass";
 import Enrolled from "../pages/Deshboard/Enrolled/Enrolled";
 import ManageClass from "../pages/Deshboard/ManageClass/ManageClass";
 import ManageUsers from "../pages/Deshboard/ManageUsers/ManageUsers";
@@ -69,8 +70,8 @@ const router = createBrowserRouter([
         element: <AddClass></AddClass>,
       },
       {
-        path: "manageclass",
-        element: <ManageClass></ManageClass>,
+        path: "addedclass",
+        element: <AddedClass></AddedClass>,
       },
       {
         path: "veiwfeedback",

@@ -3,7 +3,7 @@ import React from 'react';
 const ManageClass = () => {
     return (
         <div>
-            its manage Class page
+            its manage class page
         </div>
     );
 };

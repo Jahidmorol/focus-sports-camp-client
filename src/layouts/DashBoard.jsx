@@ -3,7 +3,6 @@ import { FaHome, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Footer from "../pages/Sheared/Footer/Footer";
-import Header from "../pages/Sheared/Header/Header";
 
 const DashBoard = () => {
   // const {user} = useAuth()
@@ -32,8 +31,18 @@ const DashBoard = () => {
               <FaHome></FaHome> Home
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/classes">
+               Classes
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/instructors">
+               Instructors
+            </NavLink>
+          </li>
           <div className="divider"></div>
-          {isAdmin && user && (
+          {isAdmin && user && !isInstructor && (
             <>
               <li>
                 <NavLink to="/dashboard/manageclass">Manage Classes</NavLink>
@@ -46,14 +55,14 @@ const DashBoard = () => {
             </>
           )}
 
-          {isInstructor && user &&(
+          {isInstructor && user && !isAdmin &&(
             <>
               <li>
                 <NavLink to="/dashboard/addclass">Add Class</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageclass">
-                  <FaHome></FaHome> Manage classes
+                <NavLink to="/dashboard/addedclass">
+                  <FaHome></FaHome> Added classes
                 </NavLink>
               </li>
               <li>
