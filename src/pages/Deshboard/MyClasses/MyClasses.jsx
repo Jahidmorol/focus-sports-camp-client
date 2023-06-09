@@ -1,17 +1,27 @@
 import React from "react";
+import Swal from "sweetalert2";
 import useAxios from "../../../hooks/useAxios";
 import useMyClass from "../../../hooks/useMyClass";
 
 const MyClasses = () => {
-  const [myClasses, setMyClasses] = useMyClass();
+  const [myClasses, refetch] = useMyClass();
   const [axiosSecure] = useAxios();
 
   const handleDelete = (classId) => {
-    axiosSecure
-      .delete(`/mysports/${classId}`)
-      .then(() => {
-        // Remove the deleted class from the list
-        setMyClasses(myClasses.filter((c) => c._id !== classId));
+    // console.log(classId);
+    axiosSecure.delete(`/myclases/${classId}`)
+      .then((res) => {
+        console.log(res.data);
+        if(res.data.deletedCount > 0){
+            refetch()
+            Swal.fire({
+                position: "bottom-start",
+                icon: "success",
+                title: "Your Class has been deleted successfully.",
+                showConfirmButton: false,
+                timer: 1000,
+              });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -26,10 +36,12 @@ const MyClasses = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl text-center md:text-4xl font-semibold mb-4">My Classes</h2>
+      <h2 className="text-2xl text-center md:text-4xl font-semibold mb-4">
+        My Classes
+      </h2>
 
       {myClasses.length === 0 ? (
-        <p>You haven't booked any classes yet.</p>
+        <p className="text-center md:text-3xl mt-16 text-red-400">You haven't booked any classes yet.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full table-auto">
@@ -45,7 +57,7 @@ const MyClasses = () => {
             </thead>
             <tbody>
               {myClasses.map((classItem, index) => (
-                <tr key={classItem._id} className='text-center'>
+                <tr key={classItem._id} className="text-center">
                   <td className="px-4 py-4">{index + 1}</td>
                   <td className="px-4 py-4">{classItem.sportName}</td>
                   <td className="px-4 py-4">{classItem.instructorName}</td>

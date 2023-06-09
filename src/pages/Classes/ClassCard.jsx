@@ -33,7 +33,6 @@ const ClassCard = ({ sport }) => {
       const handleSelect = (sport) => {
         if (user) {
           if (selected) {
-            // Sport is already selected
             return;
           }
     
@@ -49,7 +48,7 @@ const ClassCard = ({ sport }) => {
           };
     
           axiosSecure
-            .post(`/mysports?email=${user.email}`, newSport)
+            .post(`/myclases?email=${user.email}`, newSport)
             .then((res) => {
               console.log(res.data);
               if (res.data === "card already exists") {
