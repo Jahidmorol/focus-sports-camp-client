@@ -4,8 +4,6 @@ import ManageItemCard from './ManageItemCard';
 
 const ManageClass = () => {
     const [sports, loader, refetch] = useSports();
-      const [selectedClass, setSelectedClass] = useState(null);
-      const [feedback, setFeedback] = useState('');
       
 
     
@@ -13,16 +11,7 @@ const ManageClass = () => {
     
      
     
-      const handleSendFeedback = () => {
-        // Send feedback to the instructor
-        // You can use the feedback state value
-        // and send it to the instructor using axiosSecure.post or any other method
-    
-        // Clear the feedback input
-        setFeedback('');
-        // Close the modal or navigate to another route
-        setSelectedClass(null);
-      };
+      
     
       return (
         <div className="container mx-auto px-4 py-8">
@@ -30,37 +19,11 @@ const ManageClass = () => {
     
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sports.map((item) => (
-              <ManageItemCard key={item._id} refetch={refetch} item={item} setSelectedClass={setSelectedClass}></ManageItemCard>
+              <ManageItemCard key={item._id} refetch={refetch} item={item} ></ManageItemCard>
             ))}
           </div>
     
-          {selectedClass && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="bg-white absolute right-56 w-[45%] p-8 rounded-lg">
-                <h3 className="text-lg font-semibold mb-4">Send Feedback</h3>
-                <textarea
-                  value={feedback}
-                  onChange={(e) => setFeedback(e.target.value)}
-                  className="w-full h-32 rounded-md border border-gray-300 mb-4 p-2"
-                  placeholder="Write your feedback..."
-                ></textarea>
-                <div className="flex justify-end">
-                  <button
-                    onClick={handleSendFeedback}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-                  >
-                    Send
-                  </button>
-                  <button
-                    onClick={() => setSelectedClass(null)}
-                    className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md ml-2"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          
         </div>
       );
 };
