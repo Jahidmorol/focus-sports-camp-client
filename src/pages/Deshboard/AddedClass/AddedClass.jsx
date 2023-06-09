@@ -1,26 +1,33 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useAxios from '../../../hooks/useAxios';
 
 const AddedClass = () => {
-    const [addedClasses, setAddedClasses] = useState([])
-    const {user} = useAuth()
-    const [axiosSecure] = useAxios()
-    axiosSecure.get(`/addedsports?email=${user.email}`)
-    .then(res => {
-        // console.log(res.data);
-        setAddedClasses(res.data)
-    })
-    
-    return (
-        <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl text-center md:text-4xl font-semibold mb-16">
-        My Classes
-      </h2>
+  const [addedClasses, setAddedClasses] = useState([]);
+  const { user } = useAuth();
+  const [axiosSecure] = useAxios();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosSecure.get(`/addedsports?email=${user.email}`);
+        setAddedClasses(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData(); 
+  }, []);
+
+  console.log(addedClasses);
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-2xl text-center md:text-4xl font-semibold mb-16">My Classes</h2>
 
       {addedClasses.length === 0 ? (
-        <p className="text-center md:text-3xl mt-16 text-red-400">You haven't Added any classes yet.</p>
+        <p className="text-center md:text-3xl mt-16 text-red-400">You haven't added any classes yet.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full table-auto">
@@ -35,21 +42,27 @@ const AddedClass = () => {
               </tr>
             </thead>
             <tbody>
-              {addedClasses.map((classItem, index) => (
+              {addedClasses.map((classItem) => (
                 <tr key={classItem._id} className="text-center">
-                  <td className="px-1 py-1 border">
-                    <div className='w-16 rounded-md mx-auto'>
-                    <img src={classItem.image} className="h-12 rounded-md" alt="classImage " />
+                  <td className="py-1 border">
+                    <div className="w-[80%] rounded-md mx-auto">
+                      <img src={classItem.image} className="h-14 w-full rounded-md" alt="classImage" />
                     </div>
-                    </td>
+                  </td>
                   <td className="px-4 py-5 border">{classItem.sportName}</td>
                   <td className="px-4 py-5 border">{classItem.instructorName}</td>
                   <td className="px-4 py-5 border">{classItem.availableSeats}</td>
                   <td className="px-4 py-5 border">{classItem.price}</td>
-                  <td className="px-4 py-5 border">
-                    {classItem.status === 'pending' && <span className='badge badge-ghost'>Panding</span>}
-                    {classItem.status === 'aproved' && <span className='badge badge-success'>Aproved</span>}
-                    {classItem.status === 'deny' && <span className='badge badge-error'>Deny</span>}
+                  <td className="px-4 pt-3 pb-2 border">
+                    {classItem.status === 'pending' && <span className="badge badge-ghost">Pending</span>}
+                    {classItem.status === 'approved' && <span className="badge badge-success">Approved</span>}
+                    {classItem.status === 'denied' && (
+                      <div className="tooltip tooltip-open tooltip-accent mt-7 mb-0" data-tip="View Feedback">
+                        <Link to="/dashboard/feedback" className="badge badge-error mb-0">
+                          Denied
+                        </Link>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -58,7 +71,7 @@ const AddedClass = () => {
         </div>
       )}
     </div>
-    );
+  );
 };
 
 export default AddedClass;
