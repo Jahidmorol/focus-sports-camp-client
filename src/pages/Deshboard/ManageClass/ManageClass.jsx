@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import useAxios from '../../../hooks/useAxios';
 import useSports from '../../../hooks/useSports';
 import ManageItemCard from './ManageItemCard';
 
@@ -7,35 +6,12 @@ const ManageClass = () => {
     const [sports, loader, refetch] = useSports();
       const [selectedClass, setSelectedClass] = useState(null);
       const [feedback, setFeedback] = useState('');
-      const [status, setStatus] = useState('')
-      const [axiosSecure] = useAxios();
+      
 
-      axiosSecure.patch()
     
-      const handleApprove = (classId) => {
-
-        setStatus('approved')
-        // Update the status to 'approved'
-        // const updatedClasses = classes.map((classItem) => {
-        //   if (classItem.id === classId) {
-        //     return { ...classItem, status: 'approved' };
-        //   }
-        //   return classItem;
-        // });
-        // setClasses(updatedClasses);
-      };
+      
     
-      const handleDeny = (classId) => {
-        setStatus('denied')
-        // Update the status to 'denied'
-        // const updatedClasses = classes.map((classItem) => {
-        //   if (classItem.id === classId) {
-        //     return { ...classItem, status: 'denied' };
-        //   }
-        //   return classItem;
-        // });
-        // setClasses(updatedClasses);
-      };
+     
     
       const handleSendFeedback = () => {
         // Send feedback to the instructor
@@ -54,13 +30,13 @@ const ManageClass = () => {
     
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sports.map((item) => (
-              <ManageItemCard key={item._id} item={item}></ManageItemCard>
+              <ManageItemCard key={item._id} refetch={refetch} item={item} setSelectedClass={setSelectedClass}></ManageItemCard>
             ))}
           </div>
     
           {selectedClass && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="bg-white p-8 rounded-lg">
+              <div className="bg-white absolute right-56 w-[45%] p-8 rounded-lg">
                 <h3 className="text-lg font-semibold mb-4">Send Feedback</h3>
                 <textarea
                   value={feedback}

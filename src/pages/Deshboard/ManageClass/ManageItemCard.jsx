@@ -1,15 +1,28 @@
 import React from "react";
+import Swal from "sweetalert2";
+import useAxios from "../../../hooks/useAxios";
 
-const ManageItemCard = ({ item }) => {
-  const { _id, image, className, instructorName, status } = item;
+const ManageItemCard = ({ item, refetch, setSelectedClass }) => {
+  const { _id, image, sportName, instructorName, instructorEmail, availableSeats, price, status } = item;
+// console.log(item);
+
+  const [axiosSecure] = useAxios();
 
   const handleSetStatus = async (status) => {
     try {
-      const response = await axios.put(`/sports/${_id}/status`, { status });
-      // Handle the response as needed
-      console.log(response.data);
+      const res = await axiosSecure.patch(`/sports/status/${_id}`, { status });
+    //   console.log(response.data);
+    if(res.data.modifiedCount > 0){
+        refetch();
+        Swal.fire({
+            position: 'bottom-start',
+            icon: 'success',
+            title: 'Your Status has been saved',
+            showConfirmButton: false,
+            timer: 1000
+          })
+    }
     } catch (error) {
-      // Handle errors
       console.error(error);
     }
   };
@@ -20,10 +33,10 @@ const ManageItemCard = ({ item }) => {
       <div>
         <img
           src={image}
-          alt={className}
+          alt={sportName}
           className="w-full h-auto rounded-md mb-4"
         />
-        <h3 className="text-lg font-semibold mb-2">{className}</h3>
+        <h3 className="text-lg font-semibold mb-2">{sportName}</h3>
         <p className="text-sm mb-2">Instructor: {instructorName}</p>
         <p className="text-sm mb-2">Email: {instructorEmail}</p>
         <p className="text-sm mb-2">
@@ -35,7 +48,7 @@ const ManageItemCard = ({ item }) => {
       <div className="flex justify-between mt-4">
         {status === "pending" && (
           <button
-            onClick={() => handleSetStatus(_id)}
+            onClick={() => handleSetStatus('approved')}
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md mr-2"
           >
             Approve
@@ -43,7 +56,7 @@ const ManageItemCard = ({ item }) => {
         )}
         {status === "pending" && (
           <button
-            onClick={() => handleSetStatus(_id)}
+            onClick={() => handleSetStatus('denied')}
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
           >
             Deny
@@ -51,7 +64,7 @@ const ManageItemCard = ({ item }) => {
         )}
         {(status === "approved" || status === "denied") && (
           <button
-            onClick={() => handleSetStatus()}
+            onClick={() => setSelectedClass(item)}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
           >
             Send Feedback
