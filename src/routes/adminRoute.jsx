@@ -1,10 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
 import Loading from "../pages/Sheared/Loading/Loading";
 
-const adminRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation();
@@ -19,4 +19,4 @@ const adminRoute = ({ children }) => {
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;
 };
 
-export default adminRoute;
+export default AdminRoute;

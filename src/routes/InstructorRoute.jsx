@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useInstructor from "../hooks/useInstructor";
 import Loading from "../pages/Sheared/Loading/Loading";

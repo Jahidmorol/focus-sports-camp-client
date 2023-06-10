@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.confiq";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -32,7 +33,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUser = ( name, photoUrl) => {
+  const updateUser = (name, photoUrl) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photoUrl,
@@ -49,10 +50,22 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubsCribe = onAuthStateChanged(auth, (loggedUser) => {
-      console.log("logged in user inside auth state observer", loggedUser);
-      setUser(loggedUser);
-      setLoading(false);
+    const unsubsCribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("logged in user inside auth state observer", currentUser);
+
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", { email: currentUser.email })
+          .then((res) => {
+            localStorage.setItem("summer-camp-token", res.data.token);
+            setUser(currentUser);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("summer-camp-token");
+        setLoading(false);
+        setUser(currentUser);
+      }
     });
 
     return () => {
@@ -71,9 +84,9 @@ const AuthProvider = ({ children }) => {
     setReload,
   };
 
-  return <AuthContext.Provider value={authInfo}>
-    {children}
-  </AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

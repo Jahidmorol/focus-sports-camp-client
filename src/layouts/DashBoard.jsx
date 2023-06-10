@@ -3,13 +3,13 @@ import { FaHome, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import useInstructor from "../hooks/useInstructor";
 import Footer from "../pages/Sheared/Footer/Footer";
 
 const DashBoard = () => {
   const {user} = useAuth()
   const [isAdmin, isAdminLoading] = useAdmin();
-
-  const isInstructor = true;
+  const [isInstructor] = useInstructor();
 
   return (
     <div>
@@ -49,8 +49,8 @@ const DashBoard = () => {
                 <NavLink to="/dashboard/manageclass">Manage Classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/allusers">
-                  <FaUsers></FaUsers> All Users
+                <NavLink to="/dashboard/manageusers">
+                  <FaUsers></FaUsers> Manage Users
                 </NavLink>
               </li>
             </>

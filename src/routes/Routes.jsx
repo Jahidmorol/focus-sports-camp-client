@@ -14,6 +14,8 @@ import Home from "../pages/Home/Home/Home";
 import Instructors from "../pages/Instructors/Instructors";
 import SignIn from "../pages/Login/SignIn";
 import SignUp from "../pages/Login/SignUp";
+import AdminRoute from "./adminRoute";
+import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -67,24 +69,24 @@ const router = createBrowserRouter([
       // instructor---------
       {
         path: "addclass",
-        element: <AddClass></AddClass>,
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>,
       },
       {
         path: "addedclass",
-        element: <AddedClass></AddedClass>,
+        element: <InstructorRoute><AddedClass></AddedClass></InstructorRoute>,
       },
       {
         path: "veiwfeedback",
-        element: <VeiwFeedback></VeiwFeedback>,
+        element: <InstructorRoute><VeiwFeedback></VeiwFeedback></InstructorRoute>,
       },
       // admin------------
       {
         path: "manageclass",
-        element: <ManageClass></ManageClass>,
+        element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
       },
       {
-        path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        path: "manageusers",
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
       },
     ],
   },
