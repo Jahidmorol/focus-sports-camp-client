@@ -22,7 +22,12 @@ const AddedClass = () => {
     fetchData();
   }, []);
 
-  console.log(addedClasses);
+  const openFeedbackModal = (feedback) => {
+    const modalElement = document.getElementById("my_modal_1");
+    modalElement.querySelector(".feedback-text").textContent = feedback;
+    modalElement.showModal();
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-2xl text-center md:text-4xl font-semibold mb-16">
@@ -81,8 +86,8 @@ const AddedClass = () => {
                         data-tip="View Feedback"
                       >
                         <button
-                          onClick={() => window.my_modal_1.showModal()}
-                          className="badge badge-error mb-0"
+                          onClick={() => openFeedbackModal(classItem.feedback)}
+                          className="btn btn-sm btn-error mb-0"
                         >
                           Denied
                         </button>
@@ -90,11 +95,15 @@ const AddedClass = () => {
                         <dialog id="my_modal_1" className="modal">
                           <form method="dialog" className="modal-box">
                             <h3 className="font-bold text-lg">Hello!</h3>
-                            <p className="pt-4 text-lg">
-                                {classItem.feedback ? classItem.feedback : 'No feedback here !'}
+                            <p className="pt-4 text-lg feedback-text">
+                              {classItem.feedback ? classItem.feedback : 'No feedback here !'}
                             </p>
                             <div className="modal-action">
-                              <button className="btn">Close</button>
+                              <button
+                                className="btn"
+                              >
+                                Close
+                              </button>
                             </div>
                           </form>
                         </dialog>
