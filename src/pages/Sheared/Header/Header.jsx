@@ -10,7 +10,8 @@ const Header = () => {
   const [menuClicked, setMenuClicked] = useState(false);
   const { user, logOut } = useAuth();
   // const user = true
-
+  console.log(user);
+ 
   const handleSignOut = () => {
     logOut().then(() => {
       Swal.fire({

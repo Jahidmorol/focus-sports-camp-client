@@ -22,31 +22,46 @@ const SignUp = () => {
   const [error, setError] = useState("");
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     createUser(data.email, data.password)
       .then((result) => {
-        updateUser(data.name, data.photoURL).then((result) => {
-          reset();
-          setReload(new Date().getTime());
-          Swal.fire({
-            position: "bottom-start",
-            icon: "success",
-            title: "SignUp Success",
-            showConfirmButton: false,
-            timer: 1000,
-          });
-          navigate("/");
+        updateUser(data.name, data.photo).then((result) => {
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            role: "student",
+          };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                setReload(new Date().getTime());
+                Swal.fire({
+                  position: "bottom-start",
+                  icon: "success",
+                  title: "SignUp Success",
+                  showConfirmButton: false,
+                  timer: 1000,
+                });
+                navigate("/");
+              }
+            });
         });
       })
       .catch((error) => {
         console.error(error.message);
-        if(error){
-
-            setError(error.message);
-        }
-        else{
-            setError(''); 
+        if (error) {
+          setError(error.message);
+        } else {
+          setError("");
         }
       });
   };
