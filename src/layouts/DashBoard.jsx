@@ -1,13 +1,14 @@
 import React from "react";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
 import Footer from "../pages/Sheared/Footer/Footer";
 
 const DashBoard = () => {
-  // const {user} = useAuth()
-  const user = true;
-  const isAdmin = false;
+  const {user} = useAuth()
+  const [isAdmin, isAdminLoading] = useAdmin();
+
   const isInstructor = true;
 
   return (

@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         path: "enrolled",
         element: <Enrolled></Enrolled>,
       },
-      //   instructor
+      // instructor---------
       {
         path: "addclass",
         element: <AddClass></AddClass>,
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
         path: "veiwfeedback",
         element: <VeiwFeedback></VeiwFeedback>,
       },
-      // admin
+      // admin------------
       {
         path: "manageclass",
         element: <ManageClass></ManageClass>,

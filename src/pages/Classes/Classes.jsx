@@ -6,6 +6,7 @@ import ClassCard from "./ClassCard";
 
 const Classes = () => {
   const [sports, loader] = useSports();
+  const approvedSport = sports.filter(sport => sport.status === 'approved')
 
   if (loader) {
     return <Loading></Loading>;
@@ -22,7 +23,7 @@ const Classes = () => {
         <h2 className="text-4xl font-bold text-center">Classes</h2>
       </div>
       <div className="w-[85%] mx-auto mt-10 grid gap-5 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {sports.map((sport) => (
+        {approvedSport.map((sport) => (
           <ClassCard
             key={sport._id}
             sport={sport}

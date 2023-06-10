@@ -63,12 +63,8 @@ const ManageUsers = () => {
       console.error(error);
     }
   };
-
-  //   {
-  //     loading && return <Loading></Loading>
-  //   }
-
-  return (
+  
+ return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-2xl text-center md:text-4xl font-semibold mb-16">
         Manage Users
