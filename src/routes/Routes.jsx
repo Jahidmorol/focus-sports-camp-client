@@ -6,14 +6,17 @@ import Classes from "../pages/Classes/Classes";
 import AddClass from "../pages/Deshboard/AddClass/AddClass";
 import AddedClass from "../pages/Deshboard/AddedClass/AddedClass";
 import Enrolled from "../pages/Deshboard/Enrolled/Enrolled";
+import History from "../pages/Deshboard/History/History";
 import ManageClass from "../pages/Deshboard/ManageClass/ManageClass";
 import ManageUsers from "../pages/Deshboard/ManageUsers/ManageUsers";
 import MyClasses from "../pages/Deshboard/MyClasses/MyClasses";
+import Payment from "../pages/Deshboard/Payment/Payment";
 import VeiwFeedback from "../pages/Deshboard/VeiwFeedback/VeiwFeedback";
 import Home from "../pages/Home/Home/Home";
 import Instructors from "../pages/Instructors/Instructors";
 import SignIn from "../pages/Login/SignIn";
 import SignUp from "../pages/Login/SignUp";
+import ErrorPage from "../pages/Sheared/ErrorPage/ErrorPage";
 import AdminRoute from "./adminRoute";
 import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -22,6 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -52,6 +56,7 @@ const router = createBrowserRouter([
         <DashBoard></DashBoard>
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       // user
       {
@@ -63,8 +68,16 @@ const router = createBrowserRouter([
         element: <MyClasses></MyClasses>,
       },
       {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
         path: "enrolled",
         element: <Enrolled></Enrolled>,
+      },
+      {
+        path: "history",
+        element: <History></History>,
       },
       // instructor---------
       {

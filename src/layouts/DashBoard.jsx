@@ -80,6 +80,9 @@ const DashBoard = () => {
               <li>
                 <NavLink to="/dashboard/enrolled">enrolled classes</NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/history">Payment History</NavLink>
+              </li>
             </>
           )}
         </ul>

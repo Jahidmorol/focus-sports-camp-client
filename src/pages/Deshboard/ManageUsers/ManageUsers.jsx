@@ -63,7 +63,7 @@ const ManageUsers = () => {
       console.error(error);
     }
   };
-  
+
  return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-2xl text-center md:text-4xl font-semibold mb-16">
@@ -76,11 +76,11 @@ const ManageUsers = () => {
         <table className="w-full">
           <thead>
             <tr>
+              <th className="py-2 border-2 bg-slate-100">Num</th>
               <th className="py-2 border-2 bg-slate-100">Name</th>
               <th className="py-2 border-2 bg-slate-100">Email</th>
               <th className="py-2 border-2 bg-slate-100">Role</th>
               <th className="py-2 border-2 bg-slate-100">Actions</th>
-              <th className="py-2 border-2 bg-slate-100">Num</th>
             </tr>
           </thead>
           <tbody>

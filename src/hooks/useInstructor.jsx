@@ -6,9 +6,9 @@ const useInstructor = () => {
     const {user} = useAuth()
     const [axiosSecure] = useAxios()
     const {data: isInstructor, isLoading: isInsLoading} = useQuery({
-        queryKey: ["isInstructor", user.email],
+        queryKey: ["isInstructor", user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/users/instructors/${user.email}`)
+            const res = await axiosSecure.get(`/users/instructors/${user?.email}`)
             return res.data.instructor;
         }
     })
