@@ -1,64 +1,54 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth";
+import { FaRegEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const PopulerClassCard = ({ sport }) => {
   const { image, sportName, instructorName, availableSeats, price } = sport;
   const isSeatsAvailable = availableSeats > 0;
-  const { user } = useAuth();
-  const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
 
-  const isAdmin = false;
-  const isInstructor = false
-  const isSelectable = isSeatsAvailable && !isAdmin && !isInstructor;
-  const [selected, setSelected] = useState(false);
+  const handleHover = () => {
+    setIsHovered(true);
+  };
 
-  const handleSelect = () => {
-    if (user) {
-      console.log(user);
-      setSelected(true); // Set the selected state to true
-    } else {
-      navigate("/signin");
-      Swal.fire({
-        position: "bottom-start",
-        icon: "info",
-        title: "Please log in before selecting the course.",
-        showConfirmButton: false,
-        timer: 1000,
-      });
-    }
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
     <div
       className={`${
-        isSeatsAvailable ? "bg-white" : "bg-red-600 text-white"
-      } p-4 rounded-lg shadow-md`}
+        isSeatsAvailable ? "bg-slate-100" : "bg-red-600 text-white"
+      } p-4 rounded-lg shadow-md relative`}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="w-[99%] mx-auto h-[12rem] mb-4">
+      <div className="relative aspect-w-2 aspect-h-3 mb-4">
         <img
           src={image}
           alt={sportName}
-          className="w-full h-[12rem] rounded-md"
+          className={`object-cover h-[18rem] rounded-md ${
+            isHovered ? "opacity-50" : "opacity-100"
+          }`}
         />
+        {isHovered && (
+          <div className="class-card-details absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-75 p-4">
+            <h3 className="text-2xl mb-2 font-semibold">{sportName}</h3>
+            <p className="text-sm mb-2">Instructor: {instructorName}</p>
+            <p className="text-sm mb-2">Available Seats: {availableSeats}</p>
+            <p className="text-sm mb-4">Price: {price}</p>
+            <div>
+              <Link
+                to='/classes'
+                className="flex items-center justify-center text-white bg-primary px-4 py-2 rounded-full transition duration-300 ease-in-out hover:bg-primary-light"
+              >
+                <FaRegEye className="mr-2" />
+                View More
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
-      <h3 className="text-lg font-semibold">{sportName}</h3>
-      <p className="text-sm  mb-2">Instructor: {instructorName}</p>
-      <p className="text-sm  mb-2">Available Seats: {availableSeats}</p>
-      <p className="text-sm  mb-4">Price: {price}</p>
-
-      <button
-        onClick={handleSelect}
-        disabled={!isSelectable || selected} // Disable the button if not selectable or already selected
-        className={`w-full py-2 px-4 ${
-          isSelectable ? "bg-blue-500" : ""
-        } ${selected && "bg-green-500 hover:bg-green-500"}  hover:bg-${
-          isSelectable ? "blue" : ""
-        }-600 text-white font-semibold rounded-md transition duration-300`}
-      >
-        {selected ? "Selected" : isSelectable ? "Select" : "Unavailable"}
-      </button>
     </div>
   );
 };

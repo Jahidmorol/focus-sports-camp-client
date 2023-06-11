@@ -4,11 +4,7 @@ import Loading from "../../Sheared/Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
 
 const PopulerClass = () => {
-  const {
-    data: populers = [],
-    isLoading: loader,
-    refetch,
-  } = useQuery({
+  const { data: populers = [], isLoading: loader } = useQuery({
     queryKey: ["sports/populer"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/sports/populer");
@@ -20,8 +16,6 @@ const PopulerClass = () => {
     return <Loading></Loading>;
   }
 
-  const isLoggedIn = () => {};
-  const isAdmin = () => {};
   return (
     <div className="my-20">
       <div>
@@ -29,12 +23,7 @@ const PopulerClass = () => {
       </div>
       <div className="w-[85%] mx-auto mt-10 grid gap-5 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
         {populers.map((sport, index) => (
-          <PopulerClassCard
-            key={index}
-            sport={sport}
-            isLoggedIn={isLoggedIn}
-            isAdmin={isAdmin}
-          ></PopulerClassCard>
+          <PopulerClassCard key={index} sport={sport}></PopulerClassCard>
         ))}
       </div>
     </div>

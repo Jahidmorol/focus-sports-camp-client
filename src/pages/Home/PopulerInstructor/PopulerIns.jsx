@@ -37,7 +37,7 @@ const PopulerIns = () => {
       >
         {instructors.map((instructor, index) => (
           <SwiperSlide key={index}>
-            <div className="bg-white border-2 p-4 rounded-lg shadow-md">
+            <div className="bg-slate-100 border-2 p-4 rounded-lg shadow-md">
               <img
                 src={instructor.image}
                 alt={instructor.name}
