@@ -1,13 +1,14 @@
 import React from "react";
 import { FaFacebook,  FaInstagram, FaTwitter } from "react-icons/fa";
+import logo from '../../../assets/Coach/logo.png'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-8">
+    <footer className="bg-gray-800 py-4">
     <div className="container mx-auto px-4">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-        <div className="mb-4 md:mb-0">
-          <img src='' alt="Your Summer Camp" className="h-8" /> {/* Replace with your logo */}
+        <div className="mb-4 md:mb-0 w-20 md:w-full mx-auto">
+          <img src={logo} alt="Your Summer Camp" className="h-20" /> {/* Replace with your logo */}
         </div>
         <div className="w-full md:w-auto mt-4 md:mt-0">
           <div className="flex justify-center md:justify-end space-x-4">

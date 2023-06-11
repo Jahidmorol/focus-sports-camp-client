@@ -6,6 +6,7 @@ import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import singinImg from '../../assets/Coach/login.png'
 
 const SignIn = () => {
   const { logIn } = useAuth();
@@ -132,7 +133,7 @@ const SignIn = () => {
           </form>
         </div>
         <div className="hidden md:block md:w-1/2">
-          <img alt="Sign in" className="w-full h-auto" />
+          <img src={singinImg} alt="Sign in" className="w-full h-auto" />
         </div>
       </div>
     </>

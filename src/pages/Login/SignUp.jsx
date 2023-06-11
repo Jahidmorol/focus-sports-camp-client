@@ -6,6 +6,7 @@ import SocialLogin from "./SocialLogin";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import loginimg from '../../assets/Coach/login.png'
 
 const SignUp = () => {
   const { createUser, updateUser, setReload } = useAuth();
@@ -231,7 +232,7 @@ const SignUp = () => {
           </form>
         </div>
         <div className="hidden md:block md:w-1/2">
-          <img alt="Sign Up" className="w-full h-auto" />
+          <img src={loginimg} alt="Sign Up" className="w-full h-auto" />
         </div>
       </div>
     </>

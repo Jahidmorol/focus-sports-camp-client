@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import CustomLink from "../../../components/CustomLink/CustomLink";
 import useAuth from "../../../hooks/useAuth";
+import logo from '../../../assets/Coach/logo.png'
 
 const Header = () => {
   const [userClicked, setUserClicked] = useState(false);
   const [menuClicked, setMenuClicked] = useState(false);
   const { user, logOut } = useAuth();
   // const user = true
-  console.log(user);
+//   console.log(user);
  
   const handleSignOut = () => {
     logOut().then(() => {
@@ -41,14 +42,14 @@ const Header = () => {
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
   return (
-    <nav className="bg-white shadow-md  border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 sticky top-0 z-50">
+    <nav className="bg-slate-100 shadow-lg border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 sticky top-0 z-50">
       <div className="flex justify-evenly items-center mx-auto">
         {/*------------------- logo ---------------------*/}
 
         <div className="lg:w-[20%] w-[60%]">
           <Link to="/" className="inline mr-0 w-1/3">
             <span className="self-center font-extrabold text-xl whitespace-nowrap dark:text-white">
-              {/* <img className="w-1/3" src={bagsq} alt="" /> */}
+              <img className="h-12" src={logo} alt="" />
             </span>
           </Link>
         </div>
@@ -218,7 +219,7 @@ const Header = () => {
 
         <div
           className={`${
-            menuClicked ? "block absolute bg-white top-14" : "hidden"
+            menuClicked ? "block absolute bg-slate-100 top-14" : "hidden"
           } justify-between items-center w-full md:flex md:w-auto md:order-1"
           id="mobile-menu-2 z-50 px-5 leading-9`}
         >

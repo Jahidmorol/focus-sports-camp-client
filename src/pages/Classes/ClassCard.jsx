@@ -11,6 +11,8 @@ const ClassCard = ({ sport }) => {
   const { _id, image, sportName, instructorName, availableSeats, price } =
     sport;
   const [isAdmin] = useAdmin();
+//  const isAdmin = true
+
   const [isInstructor] = useInstructor();
   const isSeatsAvailable = availableSeats > 0;
   const { user } = useAuth();

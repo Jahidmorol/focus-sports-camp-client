@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   return (
-    <div className="w-[95%] mx-auto">
+    <div className="w-[90%] mx-auto mt-1">
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div className=" md:h-screen">

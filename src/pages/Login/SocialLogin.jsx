@@ -38,10 +38,10 @@ const SocialLogin = () => {
     });
   };
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center pt-4">
       <p className="text-gray-600">Or sign up with:</p>
       <button onClick={handleGoogle} className="ml-2">
-        <FaGoogle className="text-2xl text-yellow-700 "></FaGoogle>
+        <FaGoogle className="text-2xl text-blue-500 "></FaGoogle>
       </button>
     </div>
   );

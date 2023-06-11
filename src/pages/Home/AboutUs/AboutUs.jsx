@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <section className="w-[95%] mx-auto py-12 bg-gray-100 mb-10">
-      <div className="w-[85%] mx-auto">
+    <section className="w-[95%] mx-auto py-12 mb-10">
+      <div className="w-[90%] mx-auto">
         <div className="flex flex-col items-center justify-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-3xl font-bold text-center text-gray-800 mb-6"
+            className="text-2xl md:text-4xl font-bold text-cente mb-6"
           >
             About Us
           </motion.h2>
@@ -18,7 +18,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-600 text-center mb-8"
+            className=" text-center mb-8"
           >
             Welcome to Summer Camp, where sports and fun collide! We're passionate about helping young athletes discover their potential and develop their skills. Join us for an unforgettable summer of sports, friendship, and adventure!
           </motion.p>
@@ -28,7 +28,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white rounded-lg p-6 shadow-md"
+            className="bg-slate-100 rounded-lg p-6 shadow-md"
           >
             <h3 className="text-xl font-bold mb-4">Our Mission</h3>
             <p className="text-gray-600">
@@ -39,7 +39,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="bg-white rounded-lg p-6 shadow-md"
+            className="bg-slate-100 rounded-lg p-6 shadow-md"
           >
             <h3 className="text-xl font-bold mb-4">Our Values</h3>
             <p className="text-gray-600">
@@ -50,7 +50,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="bg-white rounded-lg p-6 shadow-md"
+            className="bg-slate-100 rounded-lg p-6 shadow-md"
           >
             <h3 className="text-xl font-bold mb-4">Our Team</h3>
             <p className="text-gray-600">

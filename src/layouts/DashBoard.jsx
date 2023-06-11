@@ -1,5 +1,6 @@
 import React from "react";
-import { FaHome, FaUsers } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
+import { FaChalkboardTeacher, FaCheckSquare, FaCreditCard, FaHistory, FaHome, FaLayerGroup, FaPeopleArrows, FaPlusSquare, FaSlidersH, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
@@ -10,9 +11,13 @@ const DashBoard = () => {
   const {user} = useAuth()
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor] = useInstructor();
+  console.log(isAdmin);
 
   return (
     <div>
+        <Helmet>
+        <title>Summer Camp | Dashboard</title>
+      </Helmet>
         <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
@@ -34,19 +39,19 @@ const DashBoard = () => {
           </li>
           <li>
             <NavLink to="/classes">
-               Classes
+               <FaUsers></FaUsers> Classes
             </NavLink>
           </li>
           <li>
             <NavLink to="/instructors">
-               Instructors
+              <FaChalkboardTeacher></FaChalkboardTeacher> Instructors
             </NavLink>
           </li>
           <div className="divider"></div>
           {isAdmin && user && !isInstructor && (
             <>
               <li>
-                <NavLink to="/dashboard/manageclass">Manage Classes</NavLink>
+                <NavLink to="/dashboard/manageclass"><FaSlidersH></FaSlidersH> Manage Classes</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageusers">
@@ -59,15 +64,12 @@ const DashBoard = () => {
           {isInstructor && user && !isAdmin &&(
             <>
               <li>
-                <NavLink to="/dashboard/addclass">Add Class</NavLink>
+                <NavLink to="/dashboard/addclass"><FaPlusSquare></FaPlusSquare> Add Class</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/addedclass">
-                  <FaHome></FaHome> Added classes
+                  <FaLayerGroup></FaLayerGroup> Added classes
                 </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/veiwfeedback">Veiw Feedback</NavLink>
               </li>
             </>
           )}
@@ -75,13 +77,13 @@ const DashBoard = () => {
           {user && !isAdmin && !isInstructor && (
             <>
               <li>
-                <NavLink to="/dashboard/myclasses">My Classes</NavLink>
+                <NavLink to="/dashboard/myclasses"><FaLayerGroup></FaLayerGroup> My Classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/enrolled">enrolled classes</NavLink>
+                <NavLink to="/dashboard/enrolled"><FaCreditCard></FaCreditCard> Enrolled classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">Payment History</NavLink>
+                <NavLink to="/dashboard/history"><FaHistory></FaHistory> Payment History</NavLink>
               </li>
             </>
           )}

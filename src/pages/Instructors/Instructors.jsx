@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import useInstructors from "../../hooks/useInstructors";
 import Loading from "../Sheared/Loading/Loading";
 import InstructorCard from "./InstructorCard";
@@ -11,6 +12,9 @@ const Instructors = () => {
 
   return (
     <div>
+        <Helmet>
+        <title>Summer Camp | Instructors</title>
+      </Helmet>
       <div className="w-[16rem] mx-auto my-10 ">
         <div className="text-left flex justify-start items-center">
           <span className="loading loading-ring text-blue-400 loading-lg"></span>

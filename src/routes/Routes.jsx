@@ -88,10 +88,10 @@ const router = createBrowserRouter([
         path: "addedclass",
         element: <InstructorRoute><AddedClass></AddedClass></InstructorRoute>,
       },
-      {
-        path: "veiwfeedback",
-        element: <InstructorRoute><VeiwFeedback></VeiwFeedback></InstructorRoute>,
-      },
+    //   {
+    //     path: "veiwfeedback",
+    //     element: <InstructorRoute><VeiwFeedback></VeiwFeedback></InstructorRoute>,
+    //   },
       // admin------------
       {
         path: "manageclass",

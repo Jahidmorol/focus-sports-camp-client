@@ -50,6 +50,7 @@ const AddedClass = () => {
                   Available Seats
                 </th>
                 <th className="px-4 py-4 border bg-slate-100">Price</th>
+                <th className="px-4 py-4 border bg-slate-100">Total Enrolment</th>
                 <th className="px-4 py-4 border bg-slate-100">Status</th>
               </tr>
             </thead>
@@ -73,6 +74,9 @@ const AddedClass = () => {
                     {classItem.availableSeats}
                   </td>
                   <td className="px-4 py-5 border">{classItem.price}</td>
+                  <td className="px-4 py-5 border">
+                    {classItem.totalEnrolled ? classItem.totalEnrolled : "0"}
+                  </td>
                   <td className="px-4 pt-3 pb-2 border">
                     {classItem.status === "pending" && (
                       <span className="badge badge-ghost">Pending</span>
