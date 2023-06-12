@@ -13,12 +13,14 @@ const SocialLogin = () => {
   const handleGoogle = () => {
     signInWithGoogle().then((result) => {
       const loggedInUser = result.user;
+      console.log(loggedInUser?.photoURL);
       const saveUser = {
+        image: loggedInUser?.photoURL,
         name: loggedInUser.displayName,
         email: loggedInUser.email,
         role: "student",
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://summer-camp-server-psi.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

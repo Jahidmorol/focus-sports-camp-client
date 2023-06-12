@@ -29,11 +29,12 @@ const SignUp = () => {
       .then((result) => {
         updateUser(data.name, data.photo).then((result) => {
           const saveUser = {
+            image: data.photo,
             name: data.name,
             email: data.email,
             role: "student",
           };
-          fetch("http://localhost:5000/users", {
+          fetch("https://summer-camp-server-psi.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

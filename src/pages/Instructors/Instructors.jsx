@@ -1,18 +1,26 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import useInstructors from "../../hooks/useInstructors";
+
 import Loading from "../Sheared/Loading/Loading";
 import InstructorCard from "./InstructorCard";
 
 const Instructors = () => {
-  const [instructors, loader] = useInstructors();
+
+  const { isLoading: loader, data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: () =>
+      fetch("http://localhost:5000/users").then((res) => res.json()),
+  });
+
+  const instructors = users?.filter((user) => user?.role === "instructor");
+
   if (loader) {
     return <Loading></Loading>;
   }
 
   return (
     <div>
-        <Helmet>
+      <Helmet>
         <title>Summer Camp | Instructors</title>
       </Helmet>
       <div className="w-[16rem] mx-auto my-10 ">

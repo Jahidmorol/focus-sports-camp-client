@@ -1,16 +1,21 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import instructors from "../../../../public/instructors.json";
-// import PopulerInsCard from "./PopulerInsCard";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import useInstructors from "../../../hooks/useInstructors";
 import Loading from "../../Sheared/Loading/Loading";
+import { useQuery } from "@tanstack/react-query";
 
 const PopulerIns = () => {
-  const [instructors, loader] = useInstructors();
+  const { isLoading: loader, data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: () =>
+      fetch("http://localhost:5000/users").then((res) => res.json()),
+  });
+
+  const instructors = users?.filter((user) => user?.role === "instructor");
+  const instructorsLimit = instructors.slice(0, 6);
+  
   if (loader) {
     return <Loading></Loading>;
   }
@@ -35,7 +40,7 @@ const PopulerIns = () => {
           },
         }}
       >
-        {instructors.map((instructor, index) => (
+        {instructorsLimit.map((instructor, index) => (
           <SwiperSlide key={index}>
             <div className="bg-slate-100 border-2 p-4 rounded-lg shadow-md">
               <img

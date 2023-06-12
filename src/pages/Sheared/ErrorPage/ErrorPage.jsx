@@ -13,7 +13,7 @@ const ErrorPage = () => {
       />
       <h1 className="text-4xl font-bold text-blbg-blue-500 mb-4">Oops!</h1>
       <p className="text-lg text-gray-700 mb-8">
-        {/* {error.message} */}
+        {error.message}
       </p>
       <Link
         to="/"

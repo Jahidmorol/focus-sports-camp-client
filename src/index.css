@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.drawer-side a.active {
+  /* color: white; */
+  color: "#4fa9e3";
+  border-left: "4px solid";
+  padding: "2px 8px";
+  border-radius: "10px";
+}
+.drawer-side a {
+  background-color: transparent;
+}

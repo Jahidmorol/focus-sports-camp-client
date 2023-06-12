@@ -12,7 +12,7 @@ const useSports = () => {
     // enabled: !loading && !! user?.email,
     queryKey: ["sports"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/sports");
+      const res = await fetch("https://summer-camp-server-psi.vercel.app/sports");
       return res.json();
     },
   });

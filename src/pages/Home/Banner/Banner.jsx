@@ -17,7 +17,7 @@ const Banner = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div className=" md:h-screen">
-            <img className=" w-[100%]" src={img1} alt="sliderimg" />
+            <img className=" w-[100%]" src={img7} alt="sliderimg" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -42,7 +42,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className=" md:h-screen">
-            <img className=" w-[100%]" src={img7} alt="sliderimg" />
+            <img className=" w-[100%]" src={img1} alt="sliderimg" />
           </div>
         </SwiperSlide>
       </Swiper>

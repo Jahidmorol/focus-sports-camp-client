@@ -7,7 +7,7 @@ const PopulerClass = () => {
   const { data: populers = [], isLoading: loader } = useQuery({
     queryKey: ["sports/populer"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/sports/populer");
+      const res = await fetch("https://summer-camp-server-psi.vercel.app/sports/populer");
       return res.json();
     },
   });

@@ -5,7 +5,7 @@ const Enrolled = () => {
   const [entrolClasses, setEntrolClasses] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(`http://localhost:5000/payment/${user?.email}`)
+    fetch(`https://summer-camp-server-psi.vercel.app/payment/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setEntrolClasses(data);
