@@ -12,6 +12,7 @@ import ManageUsers from "../pages/Deshboard/ManageUsers/ManageUsers";
 import MyClasses from "../pages/Deshboard/MyClasses/MyClasses";
 import Payment from "../pages/Deshboard/Payment/Payment";
 import VeiwFeedback from "../pages/Deshboard/VeiwFeedback/VeiwFeedback";
+import EditClass from "../pages/EditClass/EditClass";
 import Home from "../pages/Home/Home/Home";
 import Instructors from "../pages/Instructors/Instructors";
 import SignIn from "../pages/Login/SignIn";
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: "addedclass",
         element: <InstructorRoute><AddedClass></AddedClass></InstructorRoute>,
+      },
+      {
+        path: "editclass",
+        element: <InstructorRoute><EditClass></EditClass></InstructorRoute>,
       },
     //   {
     //     path: "veiwfeedback",

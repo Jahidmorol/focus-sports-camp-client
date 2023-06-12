@@ -5,7 +5,7 @@ const History = () => {
   const [entrolClasses, setEntrolClasses] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(`https://summer-camp-server-psi.vercel.app/payment/${user?.email}`)
+    fetch(`https://summer-camp-server-psi.vercel.app/paymenthistory/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setEntrolClasses(data);
@@ -37,6 +37,7 @@ const History = () => {
                   {" "}
                   Your transition id
                 </th>
+                <th className="px-4 py-4 border bg-slate-100">Date</th>
                 <th className="px-4 py-4 border bg-slate-100">Status</th>
               </tr>
             </thead>
@@ -57,6 +58,7 @@ const History = () => {
                     {classItem.instructorName}
                   </td>
                   <td className="px-4 py-5 border">{classItem.transitionId}</td>
+                  <td className="px-4 py-5 border">{classItem.data}</td>
                   <td className="text-center uppercase border">
                     <span className="badge badge-accent uppercase">{classItem.payment}</span>
                   </td>

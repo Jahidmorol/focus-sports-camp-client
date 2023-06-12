@@ -10,12 +10,12 @@ const PopulerIns = () => {
   const { isLoading: loader, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: () =>
-      fetch("http://localhost:5000/users").then((res) => res.json()),
+      fetch("https://summer-camp-server-psi.vercel.app/users").then((res) => res.json()),
   });
 
   const instructors = users?.filter((user) => user?.role === "instructor");
   const instructorsLimit = instructors.slice(0, 6);
-  
+
   if (loader) {
     return <Loading></Loading>;
   }

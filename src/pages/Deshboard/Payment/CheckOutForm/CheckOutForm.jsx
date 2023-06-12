@@ -82,6 +82,7 @@ const CheckOutForm = ({ selected }) => {
         email: user?.email,
         payment: "paid",
         transitionId: paymentIntent.id,
+        data: new Date()
       };
 
       console.log("is site id from out history classes", history);

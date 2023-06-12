@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxios from "../../../hooks/useAxios";
 
@@ -52,6 +53,7 @@ const AddedClass = () => {
                 <th className="px-4 py-4 border bg-slate-100">Price</th>
                 <th className="px-4 py-4 border bg-slate-100">Total Enrolment</th>
                 <th className="px-4 py-4 border bg-slate-100">Status</th>
+                <th className="px-4 py-4 border bg-slate-100">Update</th>
               </tr>
             </thead>
             <tbody>
@@ -113,6 +115,9 @@ const AddedClass = () => {
                         </dialog>
                       </div>
                     )}
+                  </td>
+                  <td className="border-2">
+                    <Link to={`/dashboard/editclass`} state={classItem}><button className="btn btn-primary btn-sm ">Update</button></Link>
                   </td>
                 </tr>
               ))}
