@@ -28,11 +28,11 @@
 
 ## Live Link
 
-- Hosted in Firebase -> [summer camp](https://simple-firebase-project-a5441.web.app/)
+- Hosted in Firebase -> [summer camp](https://summer-camp-a30fd.web.app/)
 
 ## Api Link
 
-- Hosted in Varcel -> [summer camp Api Link ](https://summer-camping-server.vercel.app/)
+- Hosted in Varcel -> [summer camp Api Link ](https://summer-camp-server-psi.vercel.app/)
 
 ## Installation
 
