@@ -45,7 +45,7 @@ const Header = () => {
 
 
   return (
-    <nav className="bg-slate-100 shadow-lg border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800 sticky top-0 z-50">
+    <nav className=" px-2 md:px-4 dark:bg-gray-800 md:bg-opacity-40 sticky top-0  z-10 w-full">
       <div className="flex items-center justify-between">
 
         {/*------------------- Start logo ---------------------*/}
@@ -114,7 +114,7 @@ const Header = () => {
                 <li>
                   <CustomLink
                     to="/dashboard"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="block py-2 px-4 text-sm text-white -gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Dashboard
                   </CustomLink>
@@ -124,7 +124,7 @@ const Header = () => {
                     <Link
                       to="/"
                       onClick={handleSignOut}
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      className="block py-2 px-4 text-sm text-white -gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Sign out
                     </Link>
@@ -134,7 +134,7 @@ const Header = () => {
                     <li>
                       <CustomLink
                         to="/signup"
-                        className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        className="block py-2 px-4 text-sm text-white -gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
                         SignUp
                       </CustomLink>
@@ -142,7 +142,7 @@ const Header = () => {
                     <li>
                       <CustomLink
                         to="/signin"
-                        className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        className="block py-2 px-4 text-sm text-white -gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
                         SignIn
                       </CustomLink>
@@ -234,7 +234,7 @@ const Header = () => {
         {/*--------------------------- Header navigation ------------------------------*/}
         <div
           className={`${
-            menuClicked ? "block absolute bg-slate-100 top-14" : "hidden"
+            menuClicked ? "block absolute bg-gray-800 top-14" : "hidden"
           } justify-between items-center w-full md:flex md:w-auto md:order-1"
           id="mobile-menu-2 z-50 px-5 leading-9`}
         >
@@ -242,7 +242,7 @@ const Header = () => {
             <li>
               <CustomLink
                 to="/"
-                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                 aria-current="page"
               >
                 Home
@@ -251,7 +251,7 @@ const Header = () => {
             <li>
               <CustomLink
                 to="/instructors"
-                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
               >
                 Instructors
               </CustomLink>
@@ -260,7 +260,7 @@ const Header = () => {
             <li>
               <CustomLink
                 to="/classes"
-                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
               >
                 Classes
               </CustomLink>
@@ -272,7 +272,7 @@ const Header = () => {
               <li>
                 <CustomLink
                   to="/dashboard"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                 >
                   Dashboard
                 </CustomLink>
@@ -285,7 +285,7 @@ const Header = () => {
                 <Link
                   to="/"
                   onClick={handleSignOut}
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                 >
                   Sign out
                 </Link>
@@ -295,7 +295,7 @@ const Header = () => {
                 <li>
                   <CustomLink
                     to="/signup"
-                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                   >
                     SignUp
                   </CustomLink>
@@ -303,7 +303,7 @@ const Header = () => {
                 <li>
                   <CustomLink
                     to="/signin"
-                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                   >
                     SignIn
                   </CustomLink>
