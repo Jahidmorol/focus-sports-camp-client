@@ -19,7 +19,7 @@
     height: 2px; */
     background: linear-gradient(270deg,#4fa9e3,#fbbe2b ,#4fa9e3);
     border-radius: 10px;
-    animation: pulsate 2s infinite;
+    animation: pulsate 3s infinite;
   }
 
   .animation-heading{
@@ -27,6 +27,15 @@
     background-clip: text;
     /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
+    /* animation: animate 10s linear infinite; */
   }
   
-  
+  /* @keyframes animate{
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 400%;
+    }
+  }
+   */

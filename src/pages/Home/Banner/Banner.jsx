@@ -28,14 +28,14 @@ const Banner = () => {
               <img className="w-full h-full object-cover" src={image} alt={`sliderimg-${index}`} />
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
                 {/* Add the heading text */}
-                <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center animation-heading">
+                <h1 className="text-4xl md:text-6xl font-bold md:mt-14 mb-4 text-center animation-heading">
                   Welcome to Our Focus Sports School
                 </h1>
                 <button className="bg-[#4fa9e3] md:font-semibold text-white px-6 py-2 md:py-3 rounded-full hover:bg-[#fbbe2b] hover:bg-opacity-80 hover:text-black transition duration-300">
                   MORE INFO
                 </button>
                 {/* Add the line */}
-                <div className="animation-line mt-6 hidden md:block md:w-[30rem] h-[2px] "></div>
+                <div className="animation-line md:mt-10 hidden md:block md:w-[30rem] h-[2px] "></div>
                 <div className="animation-line mt-4 hidden md:block md:w-[25rem] h-[2px] "></div>
                 <div className="animation-line mt-4 hidden md:block md:w-[20rem] h-[2px] "></div>
                 <div className="animation-line mt-4 hidden md:block md:w-[15rem] h-[2px] "></div>

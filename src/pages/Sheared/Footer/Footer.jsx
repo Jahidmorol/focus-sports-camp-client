@@ -1,37 +1,60 @@
+// import React from "react";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+// import { Link } from "react-router-dom";
+import logo from "../../../assets/Coach/logo.png";
+
 import React from "react";
-import { FaFacebook,  FaInstagram, FaTwitter } from "react-icons/fa";
-import logo from '../../../assets/Coach/logo.png'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-4">
-    <div className="container mx-auto px-4">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-        <div className="mb-4 md:mb-0 w-20 md:w-full mx-auto">
-          <img src={logo} alt="Your Summer Camp" className="h-20" /> {/* Replace with your logo */}
+    <footer >
+      
+      <div className="footer p-5 mt-10 md:mt-20 md:p-10 bg-base-200 text-base-content">
+        <div>
+          <img src={logo} alt="logo" className="h-20 w-20"/>
+          <span className="footer-title">Fucus Sports School</span>      
+          <div className="link link-hover flex gap-5"><FaFacebook/> <FaInstagram/> <FaTwitter/></div>
         </div>
-        <div className="w-full md:w-auto mt-4 md:mt-0">
-          <div className="flex justify-center md:justify-end space-x-4">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="text-white text-2xl" />
-            </a>
-            <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="text-white text-2xl" />
-            </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-white text-2xl" />
-            </a>
+        <div>
+          <span className="footer-title">Services</span>
+          <a className="link link-hover">Branding</a>
+          <a className="link link-hover">Design</a>
+          <a className="link link-hover">Marketing</a>
+          <a className="link link-hover">Advertisement</a>
+        </div>
+        <div>
+          <span className="footer-title">Company</span>
+          <a className="link link-hover">About us</a>
+          <a className="link link-hover">Contact</a>
+          <a className="link link-hover">Jobs</a>
+          <a className="link link-hover">Press kit</a>
+        </div>
+        <div>
+          <span className="footer-title">Legal</span>
+          <a className="link link-hover">Terms of use</a>
+          <a className="link link-hover">Privacy policy</a>
+          <a className="link link-hover">Cookie policy</a>
+        </div>
+        <div>
+          <span className="footer-title">Newsletter</span>
+          <div className="form-control md:w-80">
+            <label className="label">
+              <span className="label-text">Enter your email address</span>
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="username@site.com"
+                className="input input-bordered w-full pr-16"
+              />
+              <button className="btn bg-[#4fa9e3] text-white absolute top-0 right-0 rounded-l-none">
+                Subscribe
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div className="mt-4 text-center">
-        <h2 className="text-white text-xl font-bold">Summer Camp</h2> {/* Your website name */}
-        <p className="text-gray-400 text-sm mt-2">
-          &copy; {new Date().getFullYear()} Your Summer Camp. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
+    </footer>
   );
 };
 
