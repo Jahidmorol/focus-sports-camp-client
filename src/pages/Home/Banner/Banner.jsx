@@ -31,7 +31,7 @@ const Banner = () => {
                 <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center animation-heading">
                   Welcome to Our Focus Sports School
                 </h1>
-                <button className="bg-[#4fa9e3] md:font-semibold text-white px-6 py-2 md:py-3 rounded-lg hover:bg-[#fbbe2b] hover:bg-opacity-80 hover:text-black transition duration-300">
+                <button className="bg-[#4fa9e3] md:font-semibold text-white px-6 py-2 md:py-3 rounded-full hover:bg-[#fbbe2b] hover:bg-opacity-80 hover:text-black transition duration-300">
                   MORE INFO
                 </button>
                 {/* Add the line */}
