@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaBullseye, FaBusinessTime, FaJoomla } from "react-icons/fa";
 
 const AboutUs = () => {
   return (
@@ -30,7 +31,10 @@ const AboutUs = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="bg-slate-100 rounded-lg p-6 shadow-md"
           >
+            <div className="flex flex-col  items-center">
+            <FaBullseye className="h-14 w-14 text-[#4fa9e3]"/>
             <h3 className="text-xl font-bold mb-4">Our Mission</h3>
+            </div>
             <p className="text-gray-600">
               We foster a love for sports and physical activity among children and teenagers. Our mission is to create an environment that encourages personal growth, teamwork, and sportsmanship.
             </p>
@@ -41,7 +45,10 @@ const AboutUs = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="bg-slate-100 rounded-lg p-6 shadow-md"
           >
+            <div className="flex flex-col  items-center">
+            <FaBusinessTime className="h-14 w-14 text-[#4fa9e3]"/>
             <h3 className="text-xl font-bold mb-4">Our Values</h3>
+            </div>
             <p className="text-gray-600">
               Integrity, respect, teamwork, and personal growth are our core values. We create a supportive and inclusive community where every camper feels valued and encouraged to reach their full potential.
             </p>
@@ -52,7 +59,11 @@ const AboutUs = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="bg-slate-100 rounded-lg p-6 shadow-md"
           >
+            <div className="flex flex-col  items-center">
+            <FaJoomla className="h-14 w-14 text-[#4fa9e3]"/>
             <h3 className="text-xl font-bold mb-4">Our Team</h3>
+            </div>
+            
             <p className="text-gray-600">
               Our experienced and passionate coaches provide the best sports camp experience. They inspire campers to push their limits, learn new skills, and have fun while doing so.
             </p>
