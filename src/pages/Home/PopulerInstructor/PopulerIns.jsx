@@ -36,7 +36,7 @@ const PopulerIns = () => {
         className="mySwiper md:my-10"
         breakpoints={{
           640: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
         }}
       >

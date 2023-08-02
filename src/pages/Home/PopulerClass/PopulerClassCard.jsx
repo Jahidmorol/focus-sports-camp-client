@@ -17,13 +17,21 @@ const PopulerClassCard = ({ sport }) => {
 
   return (
     <div
-      className={`${
-        isSeatsAvailable ? "bg-slate-100" : "bg-red-600 text-white"
-      } p-4 rounded-lg shadow-md relative`}
+      className={`relative ${isSeatsAvailable ? "bg-slate-100" : "bg-red-600 text-white"} p-4 rounded-lg shadow-md`}
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative aspect-w-2 aspect-h-3 mb-4">
+      {isHovered && (
+          <>
+            <div
+              className="absolute top-0 left-0 bg-transparent w-12 h-16 border-t-2 border-l-2 border-[#4fa9e3] rounded-e-none rounded-t-md"
+            ></div>
+            <div
+              className="absolute bottom-0 right-0 bg-transparent w-12 h-16 border-b-2 border-r-2 border-[#fbbe2b] rounded-s-none rounded-b-md"
+            ></div>
+          </>
+        )}
+      <div className={`relative aspect-w-2 aspect-h-3 mb-4`}>
         <img
           src={image}
           alt={sportName}
@@ -48,6 +56,7 @@ const PopulerClassCard = ({ sport }) => {
             </div>
           </div>
         )}
+        
       </div>
     </div>
   );

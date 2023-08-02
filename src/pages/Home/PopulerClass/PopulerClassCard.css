@@ -1,0 +1,17 @@
+.box::before{
+    content: '';
+    width: 170px;
+    height: 120%;
+    background: linear-gradient(#fbbe2b ,#4f92e3);
+    animation: rotate 4s linear infinite;
+    
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

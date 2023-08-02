@@ -242,7 +242,7 @@ const Header = () => {
             <li>
               <CustomLink
                 to="/"
-                className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                 aria-current="page"
               >
                 Home
@@ -251,7 +251,7 @@ const Header = () => {
             <li>
               <CustomLink
                 to="/instructors"
-                className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
               >
                 Instructors
               </CustomLink>
@@ -260,7 +260,7 @@ const Header = () => {
             <li>
               <CustomLink
                 to="/classes"
-                className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
               >
                 Classes
               </CustomLink>
@@ -272,7 +272,7 @@ const Header = () => {
               <li>
                 <CustomLink
                   to="/dashboard"
-                  className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                  className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                 >
                   Dashboard
                 </CustomLink>
@@ -285,7 +285,7 @@ const Header = () => {
                 <Link
                   to="/"
                   onClick={handleSignOut}
-                  className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                  className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                 >
                   Sign out
                 </Link>
@@ -295,7 +295,7 @@ const Header = () => {
                 <li>
                   <CustomLink
                     to="/signup"
-                    className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                    className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                   >
                     SignUp
                   </CustomLink>
@@ -303,7 +303,7 @@ const Header = () => {
                 <li>
                   <CustomLink
                     to="/signin"
-                    className="block py-2 pr-4 pl-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
+                    className="block py-2 pr-4 pl-3 dark:text-white text-black md:hover:bg-transparent md:border-0 md:hover:text-[#4fa9e3] md:p-0 "
                   >
                     SignIn
                   </CustomLink>
